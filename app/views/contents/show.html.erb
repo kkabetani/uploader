@@ -1,0 +1,21 @@
+<% flash.each do |key, value| %>
+  <p id="<%= key %>"><%= value %></p>
+<% end %>
+
+<h2><%= @content.upload_file_name %></h2>
+
+<p>
+  <%= button_to "Download", download_content_path(@content), method: "get" %>
+</p>
+
+<%= form_tag(content_path(@content), :method => :delete) do %>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Delete" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', root_path %>
